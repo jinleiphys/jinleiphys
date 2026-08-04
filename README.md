@@ -194,7 +194,3 @@ in the codes above. Students and visitors welcome.
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:E4A0B7,40:9BC4CF,100:7FB79B&height=110&section=footer" width="100%" alt="" />
 
 </div>
-
-<!-- profile -->
-
-<!-- re-register -->
