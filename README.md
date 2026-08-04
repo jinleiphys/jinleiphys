@@ -207,8 +207,8 @@ Full list on [Google Scholar](https://scholar.google.com/citations?user=ft9l8c8A
 <br/><br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=jinleiphys&hide_border=true&theme=tokyonight&ring=E4A0B7&fire=E4A0B7&currStreakLabel=7FB79B" />
-  <img src="https://streak-stats.demolab.com?user=jinleiphys&hide_border=true&theme=graywhite&ring=C77E9B&fire=C77E9B&currStreakLabel=5E9C82" height="165" alt="Streak" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jinleiphys/jinleiphys/output/streak-card-dark.svg" />
+  <img src="https://raw.githubusercontent.com/jinleiphys/jinleiphys/output/streak-card.svg" width="98%" alt="Contributions" />
 </picture>
 
 <br/><br/>

@@ -40,6 +40,84 @@ LANG_COLOR = {
 FALLBACK = ["#7FB79B", "#E4A0B7", "#9BC4CF", "#C9A227", "#B07AA1", "#76B7B2"]
 
 
+def graphql(query, variables):
+    body = json.dumps({"query": query, "variables": variables}).encode()
+    req = urllib.request.Request("https://api.github.com/graphql", data=body, headers={
+        "Content-Type": "application/json",
+        "User-Agent": "profile-card-generator",
+        "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+    })
+    with urllib.request.urlopen(req, timeout=30) as r:
+        out = json.load(r)
+    if "errors" in out:
+        raise RuntimeError(out["errors"])
+    return out["data"]
+
+
+CONTRIB_Q = """
+query($login:String!,$from:DateTime!,$to:DateTime!){
+  user(login:$login){
+    contributionsCollection(from:$from,to:$to){
+      contributionCalendar{ weeks{ contributionDays{ date contributionCount } } }
+    }
+  }
+}
+"""
+
+
+def contributions(user, start_year):
+    """Daily contribution counts from start_year to today, oldest first.
+
+    The calendar query is capped at one year per call, so it is walked year by
+    year. streak-stats.demolab.com used to do this, but it is too slow for
+    GitHub's camo proxy, which returns 504 and leaves a broken image.
+    """
+    import datetime as dt
+    today = dt.date.today()
+    days = {}
+    for y in range(start_year, today.year + 1):
+        frm = dt.date(y, 1, 1).isoformat() + "T00:00:00Z"
+        to = min(dt.date(y, 12, 31), today).isoformat() + "T23:59:59Z"
+        data = graphql(CONTRIB_Q, {"login": user, "from": frm, "to": to})
+        cal = data["user"]["contributionsCollection"]["contributionCalendar"]
+        for w in cal["weeks"]:
+            for d in w["contributionDays"]:
+                days[d["date"]] = d["contributionCount"]
+    return sorted(days.items())
+
+
+def streaks(days):
+    """Total, current and longest streak. Today counts as pending, not broken."""
+    import datetime as dt
+    today = dt.date.today().isoformat()
+    total = sum(c for _, c in days)
+
+    longest = cur = 0
+    long_end = cur_start = None
+    prev = None
+    for date, count in days:
+        if count > 0:
+            cur = cur + 1 if prev else 1
+            if cur == 1:
+                cur_start = date
+            if cur > longest:
+                longest, long_end = cur, date
+            prev = True
+        else:
+            # An empty day today does not break the streak yet.
+            if date != today:
+                prev = False
+                cur = 0
+    return {
+        "total": total,
+        "current": cur,
+        "current_start": cur_start,
+        "longest": longest,
+        "longest_end": long_end,
+        "first": days[0][0] if days else None,
+    }
+
+
 def get(url):
     req = urllib.request.Request(url, headers={
         "Accept": "application/vnd.github+json",
@@ -145,18 +223,64 @@ def render(data, c, top_n=8):
     return "\n".join(p)
 
 
+def pretty(d):
+    import datetime as dt
+    if not d:
+        return ""
+    return dt.date.fromisoformat(d).strftime("%b %-d, %Y")
+
+
+def render_streak(s, c):
+    W, H = 860, 150
+    cols = [
+        ("Total contributions", f"{s['total']:,}", f"{pretty(s['first'])} to today"),
+        ("Current streak", f"{s['current']}", pretty(s["current_start"]) or "-"),
+        ("Longest streak", f"{s['longest']}", f"ended {pretty(s['longest_end'])}"),
+    ]
+    p = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+        f'viewBox="0 0 {W} {H}" role="img" aria-label="Contribution streaks">',
+        '<style>'
+        'text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}'
+        '.t{font-size:17px;font-weight:600}.n{font-size:34px;font-weight:700}'
+        '.l{font-size:12.5px}.s{font-size:11.5px}'
+        '</style>',
+        f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="10" '
+        f'fill="{c["bg"]}" stroke="{c["border"]}"/>',
+        f'<text x="32" y="42" class="t" fill="{c["title"]}">Contributions</text>',
+    ]
+    for i, (label, value, sub) in enumerate(cols):
+        x = 32 + i * 274
+        if i:
+            p.append(f'<line x1="{x-30}" y1="58" x2="{x-30}" y2="126" '
+                     f'stroke="{c["border"]}"/>')
+        p.append(f'<text x="{x}" y="96" class="n" fill="{c["value"]}">{value}</text>')
+        p.append(f'<text x="{x}" y="116" class="l" fill="{c["label"]}">{label}</text>')
+        p.append(f'<text x="{x}" y="133" class="s" fill="{c["muted"]}">{esc(sub)}</text>')
+    p.append('</svg>')
+    return "\n".join(p)
+
+
 def main():
     user = sys.argv[1] if len(sys.argv) > 1 else "jinleiphys"
     outdir = sys.argv[2] if len(sys.argv) > 2 else "dist"
     os.makedirs(outdir, exist_ok=True)
+
     data = collect(user)
+    start_year = int(get(f"{API}/users/{user}")["created_at"][:4])
+    s = streaks(contributions(user, start_year))
+
     for suffix, colors in THEMES.items():
-        path = os.path.join(outdir, f"profile-card{suffix}.svg")
-        with open(path, "w") as f:
-            f.write(render(data, colors))
-        print("wrote", path)
+        for name, svg in [("profile-card", render(data, colors)),
+                          ("streak-card", render_streak(s, colors))]:
+            path = os.path.join(outdir, f"{name}{suffix}.svg")
+            with open(path, "w") as f:
+                f.write(svg)
+            print("wrote", path)
     print(f"{data['repos']} repos, {data['stars']} stars, "
           f"{data['followers']} followers, {len(data['langs'])} languages")
+    print(f"{s['total']} contributions, current streak {s['current']}, "
+          f"longest {s['longest']}")
 
 
 if __name__ == "__main__":
