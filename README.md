@@ -65,14 +65,59 @@ I write most of my own solvers. They are listed below.
 
 ## Research lines
 
-| | Line | What it is about |
-|---|---|---|
-| **A** | Inclusive breakup and incomplete fusion | The IAV formalism: post-prior equivalence, IAV-CDCC, why complete fusion looks suppressed. Complete fusion suppression is a Trojan Horse effect, and incomplete fusion is one-step direct capture. |
-| **B** | Reduction methods and threshold anomaly | Universal reduced excitation functions across ~127 systems. Later shown by bootstrap UQ to be partly a precision artifact. Frozen. |
-| **C** | Few-body universality | Faddeev-AGS calculations of three-body halos. <sup>6</sup>Li behaves as a deuteron halo. |
-| **D** | Statistical inference and information geometry | How much information a measurement actually carries. Fisher-matrix limits on optical-potential extraction, Bayesian calibration of coupled-channel models, and whether chiral EFT respects its own power counting. |
-| **E** | Bound-state techniques and scattering emulators | Making scattering solvable in an L<sup>2</sup> basis, then making it fast: direct boundary matching, reduced-basis emulation, physics-informed networks. |
-| **F** | Coupled-channel absorption mechanisms | Exact flux decompositions of coupled-channel absorption, the Feshbach dynamic polarization potential built without the weak-coupling approximation, and a uniqueness proof for the coupled-channel Green's function. |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+<img src="https://img.shields.io/badge/Inclusive%20breakup%20and%20incomplete%20fusion-7FB79B?style=for-the-badge&logoColor=white" alt="" />
+
+Where the flux goes when a weakly bound projectile survives only partly. The
+Ichimura-Austern-Vincent formalism, post-prior equivalence, and the coupled-channel
+version of it. Complete fusion suppression turns out to be a Trojan Horse effect, and
+incomplete fusion is one-step direct capture.
+
+</td>
+<td width="50%" valign="top">
+
+<img src="https://img.shields.io/badge/Coupled--channel%20absorption-5E9C82?style=for-the-badge&logoColor=white" alt="" />
+
+Exact flux decompositions of what coupled-channel calculations call absorption. The
+Feshbach dynamic polarization potential constructed without the weak-coupling
+approximation, and a uniqueness proof for the coupled-channel Green's function.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+<img src="https://img.shields.io/badge/Inference%20and%20information%20geometry-E4A0B7?style=for-the-badge&logoColor=white" alt="" />
+
+How much a measurement actually carries. Fisher-matrix limits on what elastic
+scattering can fix in the optical potential, Bayesian calibration of coupled-channel
+models, and whether chiral effective field theory respects its own power counting.
+
+</td>
+<td width="50%" valign="top">
+
+<img src="https://img.shields.io/badge/Bound--state%20methods%20and%20emulators-C77E9B?style=for-the-badge&logoColor=white" alt="" />
+
+Making scattering solvable in a square-integrable basis, then making it fast: direct
+boundary matching, reduced-basis emulation, physics-informed networks, and GPU
+linear algebra underneath all of it.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+
+<img src="https://img.shields.io/badge/Few--body%20universality-9BC4CF?style=for-the-badge&logoColor=white" alt="" />
+
+Faddeev-AGS calculations of three-body halos, and what counts as a halo at all.
+<sup>6</sup>Li behaves as a deuteron halo.
+
+</td>
+</tr>
+</table>
 
 ---
 
