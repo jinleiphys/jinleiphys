@@ -88,7 +88,6 @@ reference to cite.
 | [**HPRMAT**](https://github.com/jinleiphys/HPRMAT) | Fortran + CUDA | High-performance R-matrix linear algebra: direct LU, mixed precision, multi-GPU. 18x speedup at N = 25600 on a single RTX 3090 | CPC, in press |
 | [**COLOSS**](https://github.com/jinleiphys/COLOSS) | Fortran | Complex-scaled two-body scattering with local and Perey-Buck nonlocal optical potentials | [CPC **311**, 109568](https://doi.org/10.1016/j.cpc.2025.109568) |
 | [**inhomoR**](https://github.com/jinleiphys/inhomoR) | Fortran | Lagrange-mesh R-matrix solver for inhomogeneous equations, with Vincent-Fortune contour integration | [PRC **102**, 014608](https://doi.org/10.1103/PhysRevC.102.014608) |
-| [**opticalfisher**](https://github.com/jinleiphys/opticalfisher) | Python | Fisher-information analysis of what elastic scattering constrains in the optical potential | in review |
 | [**fresco_gui**](https://github.com/jinleiphys/fresco_gui) | Fortran | A usable front end for building FRESCO input decks | - |
 
 Some production codes are not public and are available on request:
@@ -99,6 +98,7 @@ Some production codes are not public and are available on request:
 | **PINN-ECS** | Python / JAX | Physics-informed network for scattering with an exterior-complex-scaling boundary | [PRC **113**, 064618](https://doi.org/10.1103/sjz4-pq6p) |
 | **BiLNN** | PyTorch | Bidirectional liquid neural network mapping the KD02 optical potential to scattering wave functions, differentiable and global over 1-200 MeV | [PRC **114**, 014620](https://doi.org/10.1103/qw54-df4l) |
 | **transfer** | Fortran 95 | DWBA and IAV transfer engine, carries the phase-equivalent nonlocality machinery | in review |
+| **opticalfisher** | Python | Fisher-information analysis of what elastic scattering constrains in the optical potential | in review |
 | **STARS** | Fortran + CUDA | GPU coupled-channels and CDCC production code with a Fortran-side reduced-basis emulator | - |
 
 ---
