@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="150" viewBox="0 0 860 150" role="img" aria-label="Contribution streaks">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}.t{font-size:17px;font-weight:600}.n{font-size:34px;font-weight:700}.l{font-size:12.5px}.s{font-size:11.5px}</style>
+<rect x="0.5" y="0.5" width="859" height="149" rx="10" fill="#ffffff" stroke="#d8dee4"/>
+<text x="32" y="42" class="t" fill="#C77E9B">Contributions</text>
+<text x="32" y="96" class="n" fill="#24292f">3,388</text>
+<text x="32" y="116" class="l" fill="#57606a">Total contributions</text>
+<text x="32" y="133" class="s" fill="#8b949e">Jan 1, 2016 to today</text>
+<line x1="276" y1="58" x2="276" y2="126" stroke="#d8dee4"/>
+<text x="306" y="96" class="n" fill="#24292f">5</text>
+<text x="306" y="116" class="l" fill="#57606a">Current streak</text>
+<text x="306" y="133" class="s" fill="#8b949e">Aug 31, 2026</text>
+<line x1="550" y1="58" x2="550" y2="126" stroke="#d8dee4"/>
+<text x="580" y="96" class="n" fill="#24292f">37</text>
+<text x="580" y="116" class="l" fill="#57606a">Longest streak</text>
+<text x="580" y="133" class="s" fill="#8b949e">ended Dec 9, 2025</text>
+</svg>
