@@ -214,8 +214,8 @@ Full list on [Google Scholar](https://scholar.google.com/citations?user=ft9l8c8A
 <br/><br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=jinleiphys&theme=tokyo-night&hide_border=true&custom_title=Contribution%20activity&line=E4A0B7&point=7FB79B" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=jinleiphys&theme=minimal&hide_border=true&custom_title=Contribution%20activity&line=C77E9B&point=5E9C82" width="98%" alt="Activity graph" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jinleiphys/jinleiphys/output/activity-graph-dark.svg" />
+  <img src="https://raw.githubusercontent.com/jinleiphys/jinleiphys/output/activity-graph.svg" width="98%" alt="Activity graph" />
 </picture>
 
 <br/>

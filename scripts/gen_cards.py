@@ -261,6 +261,105 @@ def render_streak(s, c):
     return "\n".join(p)
 
 
+def render_activity(days, c, span=31):
+    """Contribution activity over the last `span` days.
+
+    github-readme-activity-graph.vercel.app now answers 402 DEPLOYMENT_DISABLED,
+    the same way github-readme-stats and profile-trophy did, so the chart is
+    drawn here from the calendar data already fetched for the streak card.
+    """
+    import datetime as dt
+    pts = days[-span:]
+    W, H = 860, 300
+    L, R, T, B = 52, 26, 62, 44
+    iw, ih = W - L - R, H - T - B
+
+    peak = max([v for _, v in pts] + [1])
+    step = max(1, -(-peak // 4))          # ceil division, 4 gridlines
+    top = step * 4
+
+    def X(i):
+        return L + (iw * i / (len(pts) - 1) if len(pts) > 1 else 0)
+
+    def Y(v):
+        return T + ih - ih * v / top
+
+    xs = [X(i) for i in range(len(pts))]
+    ys = [Y(v) for _, v in pts]
+
+    # Monotone cubic Hermite (Fritsch-Carlson). A plain Catmull-Rom overshoots
+    # and dips the curve below zero contributions, which is not a thing.
+    n = len(pts)
+    slope = [(ys[i + 1] - ys[i]) / (xs[i + 1] - xs[i]) for i in range(n - 1)]
+    m = [0.0] * n
+    for i in range(n):
+        if i == 0:
+            m[i] = slope[0] if slope else 0.0
+        elif i == n - 1:
+            m[i] = slope[-1]
+        elif slope[i - 1] * slope[i] <= 0:
+            m[i] = 0.0
+        else:
+            m[i] = (slope[i - 1] + slope[i]) / 2
+    for i in range(n - 1):
+        if slope[i] == 0:
+            m[i] = m[i + 1] = 0.0
+        else:
+            a, b = m[i] / slope[i], m[i + 1] / slope[i]
+            t = (a * a + b * b) ** 0.5
+            if t > 3:
+                m[i], m[i + 1] = 3 / t * a * slope[i], 3 / t * b * slope[i]
+
+    d = [f"M{xs[0]:.1f},{ys[0]:.1f}"]
+    for i in range(n - 1):
+        h = (xs[i + 1] - xs[i]) / 3
+        d.append(f"C{xs[i]+h:.1f},{ys[i]+m[i]*h:.1f} "
+                 f"{xs[i+1]-h:.1f},{ys[i+1]-m[i+1]*h:.1f} "
+                 f"{xs[i+1]:.1f},{ys[i+1]:.1f}")
+    line = " ".join(d)
+    area = line + f" L{xs[-1]:.1f},{T+ih} L{xs[0]:.1f},{T+ih} Z"
+
+    gid = "ag" + ("d" if c["bg"] == "#0d1117" else "l")
+    p = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+        f'viewBox="0 0 {W} {H}" role="img" aria-label="Contribution activity">',
+        '<style>'
+        'text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}'
+        '.t{font-size:17px;font-weight:600}.a{font-size:11.5px}'
+        '</style>',
+        f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1">'
+        f'<stop offset="0" stop-color="{c["title"]}" stop-opacity="0.30"/>'
+        f'<stop offset="1" stop-color="{c["title"]}" stop-opacity="0.02"/>'
+        '</linearGradient></defs>',
+        f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="10" '
+        f'fill="{c["bg"]}" stroke="{c["border"]}"/>',
+        f'<text x="32" y="40" class="t" fill="{c["title"]}">Contribution activity</text>',
+    ]
+    for k in range(5):
+        v = step * k
+        y = Y(v)
+        p.append(f'<line x1="{L}" y1="{y:.1f}" x2="{L+iw}" y2="{y:.1f}" '
+                 f'stroke="{c["border"]}" stroke-width="1"'
+                 + ('' if k == 0 else ' stroke-dasharray="3 4"') + '/>')
+        p.append(f'<text x="{L-10}" y="{y+4:.1f}" class="a" text-anchor="end" '
+                 f'fill="{c["muted"]}">{v}</text>')
+
+    p.append(f'<path d="{area}" fill="url(#{gid})"/>')
+    p.append(f'<path d="{line}" fill="none" stroke="{c["title"]}" '
+             'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>')
+
+    every = max(1, len(pts) // 6)
+    for i, (date, v) in enumerate(pts):
+        p.append(f'<circle cx="{xs[i]:.1f}" cy="{ys[i]:.1f}" r="3" '
+                 f'fill="{c["bg"]}" stroke="{c["accent"]}" stroke-width="2"/>')
+        if i % every == 0 or i == len(pts) - 1:
+            lab = dt.date.fromisoformat(date).strftime("%b %-d")
+            p.append(f'<text x="{xs[i]:.1f}" y="{T+ih+22}" class="a" '
+                     f'text-anchor="middle" fill="{c["muted"]}">{lab}</text>')
+    p.append('</svg>')
+    return "\n".join(p)
+
+
 def main():
     user = sys.argv[1] if len(sys.argv) > 1 else "jinleiphys"
     outdir = sys.argv[2] if len(sys.argv) > 2 else "dist"
@@ -268,11 +367,13 @@ def main():
 
     data = collect(user)
     start_year = int(get(f"{API}/users/{user}")["created_at"][:4])
-    s = streaks(contributions(user, start_year))
+    days = contributions(user, start_year)
+    s = streaks(days)
 
     for suffix, colors in THEMES.items():
         for name, svg in [("profile-card", render(data, colors)),
-                          ("streak-card", render_streak(s, colors))]:
+                          ("streak-card", render_streak(s, colors)),
+                          ("activity-graph", render_activity(days, colors))]:
             path = os.path.join(outdir, f"{name}{suffix}.svg")
             with open(path, "w") as f:
                 f.write(svg)
