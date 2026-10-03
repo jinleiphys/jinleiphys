@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="300" viewBox="0 0 860 300" role="img" aria-label="Contribution activity">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}.t{font-size:17px;font-weight:600}.a{font-size:11.5px}</style>
+<defs><linearGradient id="agl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C77E9B" stop-opacity="0.30"/><stop offset="1" stop-color="#C77E9B" stop-opacity="0.02"/></linearGradient></defs>
+<rect x="0.5" y="0.5" width="859" height="299" rx="10" fill="#ffffff" stroke="#d8dee4"/>
+<text x="32" y="40" class="t" fill="#C77E9B">Contribution activity</text>
+<line x1="52" y1="256.0" x2="834" y2="256.0" stroke="#d8dee4" stroke-width="1"/>
+<text x="42" y="260.0" class="a" text-anchor="end" fill="#8b949e">0</text>
+<line x1="52" y1="207.5" x2="834" y2="207.5" stroke="#d8dee4" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="42" y="211.5" class="a" text-anchor="end" fill="#8b949e">11</text>
+<line x1="52" y1="159.0" x2="834" y2="159.0" stroke="#d8dee4" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="42" y="163.0" class="a" text-anchor="end" fill="#8b949e">22</text>
+<line x1="52" y1="110.5" x2="834" y2="110.5" stroke="#d8dee4" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="42" y="114.5" class="a" text-anchor="end" fill="#8b949e">33</text>
+<line x1="52" y1="62.0" x2="834" y2="62.0" stroke="#d8dee4" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="42" y="66.0" class="a" text-anchor="end" fill="#8b949e">44</text>
+<path d="M52.0,229.5 C60.7,217.8 69.4,194.3 78.1,194.3 C86.8,194.3 95.4,247.2 104.1,247.2 C112.8,247.2 121.5,236.2 130.2,225.1 C138.9,214.1 147.6,181.0 156.3,181.0 C165.0,181.0 173.6,247.2 182.3,247.2 C191.0,247.2 199.7,229.5 208.4,229.5 C217.1,229.5 225.8,251.6 234.5,251.6 C243.2,251.6 251.8,141.4 260.5,141.4 C269.2,141.4 277.9,211.9 286.6,216.3 C295.3,220.7 304.0,220.7 312.7,220.7 C321.4,220.7 330.0,106.1 338.7,106.1 C347.4,106.1 356.1,132.5 364.8,132.5 C373.5,132.5 382.2,66.4 390.9,66.4 C399.6,66.4 408.2,176.6 416.9,176.6 C425.6,176.6 434.3,110.5 443.0,110.5 C451.7,110.5 460.4,256.0 469.1,256.0 C477.8,256.0 486.4,256.0 495.1,251.6 C503.8,247.2 512.5,167.8 521.2,167.8 C529.9,167.8 538.6,185.5 547.3,185.5 C556.0,185.5 564.6,84.0 573.3,84.0 C582.0,84.0 590.7,84.0 599.4,84.0 C608.1,84.0 616.8,66.4 625.5,66.4 C634.2,66.4 642.8,229.5 651.5,242.8 C660.2,256.0 668.9,256.0 677.6,256.0 C686.3,256.0 695.0,247.2 703.7,247.2 C712.4,247.2 721.0,256.0 729.7,256.0 C738.4,256.0 747.1,256.0 755.8,256.0 C764.5,256.0 773.2,256.0 781.9,256.0 C790.6,256.0 799.2,172.2 807.9,172.2 C816.6,172.2 825.3,228.1 834.0,256.0 L834.0,256 L52.0,256 Z" fill="url(#agl)"/>
+<path d="M52.0,229.5 C60.7,217.8 69.4,194.3 78.1,194.3 C86.8,194.3 95.4,247.2 104.1,247.2 C112.8,247.2 121.5,236.2 130.2,225.1 C138.9,214.1 147.6,181.0 156.3,181.0 C165.0,181.0 173.6,247.2 182.3,247.2 C191.0,247.2 199.7,229.5 208.4,229.5 C217.1,229.5 225.8,251.6 234.5,251.6 C243.2,251.6 251.8,141.4 260.5,141.4 C269.2,141.4 277.9,211.9 286.6,216.3 C295.3,220.7 304.0,220.7 312.7,220.7 C321.4,220.7 330.0,106.1 338.7,106.1 C347.4,106.1 356.1,132.5 364.8,132.5 C373.5,132.5 382.2,66.4 390.9,66.4 C399.6,66.4 408.2,176.6 416.9,176.6 C425.6,176.6 434.3,110.5 443.0,110.5 C451.7,110.5 460.4,256.0 469.1,256.0 C477.8,256.0 486.4,256.0 495.1,251.6 C503.8,247.2 512.5,167.8 521.2,167.8 C529.9,167.8 538.6,185.5 547.3,185.5 C556.0,185.5 564.6,84.0 573.3,84.0 C582.0,84.0 590.7,84.0 599.4,84.0 C608.1,84.0 616.8,66.4 625.5,66.4 C634.2,66.4 642.8,229.5 651.5,242.8 C660.2,256.0 668.9,256.0 677.6,256.0 C686.3,256.0 695.0,247.2 703.7,247.2 C712.4,247.2 721.0,256.0 729.7,256.0 C738.4,256.0 747.1,256.0 755.8,256.0 C764.5,256.0 773.2,256.0 781.9,256.0 C790.6,256.0 799.2,172.2 807.9,172.2 C816.6,172.2 825.3,228.1 834.0,256.0" fill="none" stroke="#C77E9B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="52.0" cy="229.5" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="52.0" y="278" class="a" text-anchor="middle" fill="#8b949e">Sep 3</text>
+<circle cx="78.1" cy="194.3" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="104.1" cy="247.2" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="130.2" cy="225.1" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="156.3" cy="181.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="182.3" cy="247.2" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="182.3" y="278" class="a" text-anchor="middle" fill="#8b949e">Sep 8</text>
+<circle cx="208.4" cy="229.5" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="234.5" cy="251.6" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="260.5" cy="141.4" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="286.6" cy="216.3" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="312.7" cy="220.7" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="312.7" y="278" class="a" text-anchor="middle" fill="#8b949e">Sep 13</text>
+<circle cx="338.7" cy="106.1" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="364.8" cy="132.5" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="390.9" cy="66.4" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="416.9" cy="176.6" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="443.0" cy="110.5" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="443.0" y="278" class="a" text-anchor="middle" fill="#8b949e">Sep 18</text>
+<circle cx="469.1" cy="256.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="495.1" cy="251.6" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="521.2" cy="167.8" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="547.3" cy="185.5" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="573.3" cy="84.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="573.3" y="278" class="a" text-anchor="middle" fill="#8b949e">Sep 23</text>
+<circle cx="599.4" cy="84.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="625.5" cy="66.4" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="651.5" cy="242.8" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="677.6" cy="256.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="703.7" cy="247.2" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="703.7" y="278" class="a" text-anchor="middle" fill="#8b949e">Sep 28</text>
+<circle cx="729.7" cy="256.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="755.8" cy="256.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="781.9" cy="256.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="807.9" cy="172.2" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<circle cx="834.0" cy="256.0" r="3" fill="#ffffff" stroke="#5E9C82" stroke-width="2"/>
+<text x="834.0" y="278" class="a" text-anchor="middle" fill="#8b949e">Oct 3</text>
+</svg>
